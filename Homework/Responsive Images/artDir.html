@@ -6,14 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Direction Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <sub> <a href="index.html"> &#8592; Return to Index Page</a> </sub>
+    <h3> Art Direction Example </h3>
     <p> This is an image of me when I first came up to NMU for the first time. My best friends and I were exploring
         frozen dead river and eventually found this fallen tree that I just had to take a picture with!</p>
     <picture>
-        <source media="(max-width: 999px)" srcset="imgs/me-centered.jpg">
-        <source media="(min-width: 1000px)" srcset="imgs/me.jpg">
+        <source media="(max-width: 999px)" srcset="imgs/me-centered.jpg 900w" sizes="100vw">
+        <source media="(min-width: 1000px)" srcset="imgs/me.jpg 1000w" sizes="100vw">
         <img src="imgs/me.jpg" alt="Kayin sitting on a fallen log in a winter wonderland.">
     </picture>
 </body>

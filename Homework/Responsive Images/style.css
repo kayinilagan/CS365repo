@@ -2,3 +2,26 @@ a {
     display: block;
     margin: 5px;
 }
+
+body {
+    background-color: tan;
+}
+
+p,
+ul {
+    background-color: blanchedalmond;
+    border: 2px solid rgb(216, 210, 210);
+}
+
+img {
+    border: 6px solid blanchedalmond;
+}
+
+h1,
+h3 {
+    margin-bottom: 0px;
+}
+
+sub {
+    margin-top: 0px;
+}
