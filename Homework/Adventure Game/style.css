@@ -5,3 +5,21 @@
 .in-line {
     display: inline;
 }
+
+body {
+    background-image: url(imgs/paperBackground.jpg);
+    background-size: cover;
+}
+
+button {
+    border: black 2px solid;
+    background-color: tan;
+}
+
+p {
+    display: inline;
+    padding: 5px;
+    margin: 8px;
+    background-color: aliceblue;
+    border: black 2px dashed;
+}
