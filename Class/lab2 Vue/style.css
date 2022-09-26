@@ -1,0 +1,9 @@
+.calculatorContainer {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    row-gap: .5em;
+    column-gap: .5em;
+    border: 1px solid black;
+    padding: .25em;
+    background-color: #bbb;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="client.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- All HTML code for your application goes in here -->
+        <span class="calculatorContainer">
+            <input type="text" v-model.number="operand1">
+            <input type="text" v-model.number="operand2">
+            <span v-if="singleOk && isNonNegativeInteger(operand1)">&Sqrt;{{operand1}} = {{Math.sqrt(operand1)}}</span>
+            <span v-if="singleOk"><var>{{operand1}}<sup>2</sup> = {{operand1 * operand1}} </var></span>
+            <span v-if="singleOk"><var>{{operand1}}<sup>3</sup> = {{operand1 * operand1 * operand1}} </var></span>
+            <span v-if="singleOk && isNonNegativeInteger(operand1)"><var> {{operand1}}! = {{factorial}} </var></span>
+            <span v-if="singleOk && isPositiveInteger(operand1)"><var> {{sumDisplay}} {{operand1}} = {{sum}}
+                </var></span>
+            <span v-if="doubleOk"><var>{{operand1}} + {{operand2}} = {{operand1 + operand2}} </var></span>
+            <span v-if="doubleOk"><var>{{operand1}} - {{operand2}} = {{operand1 - operand2}} </var></span>
+            <span v-if="doubleOk"><var>{{operand1}} * {{operand2}} = {{operand1 * operand2}} </var></span>
+            <span v-if="doubleOk"><var>{{operand1}} / {{operand2}} = {{operand1 / operand2}} </var></span>
+        </span>
+    </div>
+</body>
+
+</html>
