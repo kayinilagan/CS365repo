@@ -1,0 +1,27 @@
+.center {
+    text-align: center;
+}
+
+div {
+    padding: 15px;
+}
+
+body {
+    background-color: blanchedalmond;
+}
+
+.textOverlay {
+    position: relative;
+}
+
+.count3 {
+    position: absolute;
+    bottom: 5px;
+    left: 475px;
+}
+
+.count5 {
+    position: absolute;
+    bottom: 5px;
+    right: 500px;
+}

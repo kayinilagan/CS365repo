@@ -7,14 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="vue.global.js"></script>
     <script defer src="client.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Cup Images</title>
 </head>
 
-<body>
+<body class="center">
     <div id="app">
         <!-- All HTML code for your application goes in here -->
-        <img v-bind:src="'cupImages/' + cup3 + 'OutOf3.jpg'">
-        <img v-bind:src="'cupImages/' + cup5 + 'OutOf5.jpg'">
+        <div class="textOverlay">
+            <img v-bind:src="'cupImages/' + cup3 + 'OutOf3.jpg'">
+            <h3 class="count3">{{cup3}}</h3>
+            <img v-bind:src="'cupImages/' + cup5 + 'OutOf5.jpg'">
+            <h3 class="count5">{{cup5}}</h3>
+        </div>
         <div>
             <button v-on:click="fill3CupFromVat" type="button">Fill 3-cup from Vat</button>
             <button v-on:click="fill5CupFromVat" type="button">Fill 5-cup from Vat</button>
