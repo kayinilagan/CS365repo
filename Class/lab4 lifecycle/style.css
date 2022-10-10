@@ -1,0 +1,22 @@
+#app {
+    display: flex;
+    column-gap: 30px;
+    align-items: flex-start;
+}
+
+.flex {
+    display: flex;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid burlywood;
+    background-color: blanchedalmond;
+}
+
+canvas {
+    border: 5px solid burlywood;
+}
+
+.inputSpan {
+    margin-left: 5px;
+    margin-right: 5px;
+}
