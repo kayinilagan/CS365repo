@@ -18,6 +18,7 @@ boxes.forEach(box => {
     box.addEventListener('dragenter', dragEnter)
     box.addEventListener('dragover', dragOver);
     box.addEventListener('dragleave', dragLeave);
+    box.addEventListener('dragend', dragEnd)
     box.addEventListener('drop', drop);
 });
 
@@ -34,6 +35,10 @@ function dragOver(e) {
 
 function dragLeave(e) {
     e.target.classList.remove('drag-over');
+}
+
+function dragEnd(e) {
+    e.target.classList.remove('hide');
 }
 
 function drop(e) {
