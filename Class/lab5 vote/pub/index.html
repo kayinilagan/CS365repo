@@ -12,10 +12,23 @@
     <form action="/numberOfCandidates" method="get">
         <input type="submit" value="Get candidate count">
     </form>
+    <form action="/getTotalVotes" method="get">
+        <input type="submit" value="Get total votes">
+    </form>
     <form action="/vote" method="post">
         <label for="person">Person to vote for:</label>
         <input type="text" id="person" name="candidate">
         <input type="submit" value="Submit Candidate Name">
+    </form>
+    <form action="/voteTotalFor" method="get">
+        <label for="candidate">Get votes for: </label>
+        <input type="text" id="personVote" name="candidateVote">
+        <input type="submit" value="Get Votes For">
+    </form>
+    <form action="/reset" method="post">
+        <label for="password">Enter Password to Reset: </label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Reset">
     </form>
 </body>
 
