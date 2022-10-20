@@ -8,23 +8,31 @@
     <title>Wolf Goat Cabbage</title>
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/vue.global.js"></script>
+    <script defer src="js/tools.js"></script>
     <script defer src="js/client.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <div class="container">
-            <div class="drop-targets">
-                <div class="box" @dragEnter.prevent="dragEnter" @dragOver.prevent="dragOver" @dragLeave="dragLeave"
-                    @dragEnd="dragEnd" @drop="drop">
-                    <div class="item" id="item" @load="dragStart" draggable="true">
-                    </div>
+        <h1 class="center"> Drag and Drop The Crossers To Get Across! </h1>
+        <div id="parent">
+            <div class="drop-zone" id="left" @drop="onDrop($event, false)" @dragover.prevent="onDragOver()"
+                @dragenter.prevent>
+                <div v-for="crosser in notCrossed" :key="crosser.title" draggable="true"
+                    @dragstart="startDrag($event, crosser)" :style="crosser.image" class="box">
+                    {{ crosser.title }}
                 </div>
-                <div class="box" @dragEnter.prevent="dragEnter" @dragOver.prevent="dragOver" @dragLeave="dragLeave"
-                    @dragEnd="dragEnd" @drop="drop">
+            </div>
+            <div class="drop-zone" id="right" @drop="onDrop($event, true)" @dragover.prevent="onDragOver()"
+                @dragenter.prevent>
+                <div v-for="crosser in crossed" :key="crosser.title" draggable="true"
+                    @dragstart="startDrag($event, crosser)" :style="crosser.image" class="box">
+                    {{ crosser.title }}
                 </div>
             </div>
         </div>
+        <h1 class="hide"> {{ win }} </h1>
+        <div class="center"><button class="resetButton" @click="reset()"> Reset </button></div>
     </div>
     </div>
     </div>
