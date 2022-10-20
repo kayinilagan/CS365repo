@@ -13,7 +13,20 @@
 
 <body>
     <div id="app">
-
+        <div class="container">
+            <div class="drop-targets">
+                <div class="box" @dragEnter.prevent="dragEnter" @dragOver.prevent="dragOver" @dragLeave="dragLeave"
+                    @dragEnd="dragEnd" @drop="drop">
+                    <div class="item" id="item" @load="dragStart" draggable="true">
+                    </div>
+                </div>
+                <div class="box" @dragEnter.prevent="dragEnter" @dragOver.prevent="dragOver" @dragLeave="dragLeave"
+                    @dragEnd="dragEnd" @drop="drop">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     </div>
 </body>
 

@@ -1,4 +1,4 @@
-// Code taken from: 
+// Code taken from: https://www.javascripttutorial.net/web-apis/javascript-drag-and-drop/
 /* draggable element */
 const item = document.querySelector('.item');
 
