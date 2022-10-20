@@ -42,8 +42,8 @@ h1 {
 }
 
 .box {
-    height: 150px;
-    width: 150px;
+    height: 125px;
+    width: 125px;
     border: solid 3px #ccc;
     margin: 10px;
     background-color: #fff;
