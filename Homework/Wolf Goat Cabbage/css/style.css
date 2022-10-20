@@ -22,10 +22,12 @@ h1 {
 }
 
 #left {
+    float: left;
     flex: 50%;
 }
 
 #right {
+    float: right;
     flex: 50%;
 
     display: flex;
