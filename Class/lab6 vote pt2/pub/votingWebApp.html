@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="js/vue.global.js"></script>
+    <script defer src="js/client.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <button @click="fetchNumCandidates"> Get candidate count</button>
+        </div>
+        <div>
+            <button @click="getTotalVotes"> Get total votes </button>
+        </div>
+        <div>
+            <label for="person">Person to vote for:</label>
+            <input type="text" id="person" v-model="candidate">
+            <button @click="recordVote"> Vote for person </button>
+        </div>
+        <div>
+            <label for="candidate"> Get vote total for: </label>
+            <input type="text" id="personVote" v-model="candidateVote">
+            <button @click="voteTotalFor"> Get vote total for</button>
+        </div>
+        <div>
+            <label for="password">Enter Password to Reset: </label>
+            <input type="password" id="password" name="password">
+            <button @click="reset"> Reset </button>
+        </div>
+        <pre> {{ feedback }} </pre>
+    </div>
+</body>
+
+</html>
