@@ -6,10 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="js/vue.global.js"></script>
+    <script defer src="js/client.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id=""></div>
+    <div id="app">
+        <button v-on:click="listResources"> Listing all resources... </button>
+        <button v-on:click="createResource"> Create resource... </button>
+        <div>
+            <input type="text">
+            <textarea name="body" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div v-if="posts!=null" class="box" v-for="post in posts">
+            <h2>{{post.title}}</h2>
+            <p>{{post.body}}</p>
+            <p>{{getUser(post.userId).name}}</p>
+        </div>
+        <div v-if="users!=null" v-for="user of users">
+            <p>{{user.name}} {{user.email}} {{user.catchPhrase}}</p>
+        </div>
+    </div>
 </body>
 
 </html>
