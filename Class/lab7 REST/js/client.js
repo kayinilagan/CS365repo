@@ -10,7 +10,7 @@ Promise.resolve() //gives us a promise that's fufilled right away!
 
 let myApp = Vue.createApp({
     data() {
-        return { posts: null, users: null, title: null, body: null };
+        return { posts: null, users: null, title: null, body: null, waitingOnPost: false };
     },
     methods: {
         getUser(userId) {
@@ -28,18 +28,85 @@ let myApp = Vue.createApp({
             fetch('https://jsonplaceholder.typicode.com/posts', {
                 method: 'POST',
                 body: JSON.stringify({
-                    title: 'foo',
-                    body: 'bar',
+                    title: this.title,
+                    body: this.body,
                     userId: 1,
                 }),
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                 },
             })
-                .then((response) => response.json())
+                .then((response) => {
+                    if (response.ok) return response.json();
+                    else throw new Error("status" + response.status);
+                })
                 .then((json) => {
                     console.log(json);
                     this.posts.push(json);
+                    this.title = null;
+                    this.body = null;
+                }).finally(() => {
+                    this.waitingOnPost = false;
+                })
+            this.waitingOnPost = true;
+        },
+        updateResource(postID) {
+            fetch('https://jsonplaceholder.typicode.com/posts/' + postID, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    id: postID,
+                    title: 'foo',
+                    body: 'bar',
+                    userId: postID,
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => {
+                    if (response.ok) return response.json();
+                    else throw new Error("status" + response.status);
+                })
+                .then((json) => {
+                    let i = this.posts.findIndex(post => post.id == json.id);
+                    if (i == -1) throw new Error("Couldn't find post index " + i);
+                    this.posts[i] = json;
+                });
+
+        },
+        patchResource(postID) {
+            fetch('https://jsonplaceholder.typicode.com/posts/' + postID, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    title: 'foo',
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => {
+                    if (response.ok) return response.json();
+                    else throw new Error("status" + response.status);
+                })
+                .then((json) => {
+                    let i = this.posts.findIndex(post => post.id == json.id);
+                    if (i == -1) throw new Error("Couldn't find post index " + i);
+                    this.posts[i] = json;
+                });
+
+        },
+        deleteResource(postID) {
+            fetch('https://jsonplaceholder.typicode.com/posts/' + postID, {
+                method: 'DELETE',
+            })
+                .then((response) => {
+                    if (response.ok) return response.json();
+                    else throw new Error("status" + response.status);
+                })
+                .then(() => {
+                    let i = this.posts.findIndex(post => post.id == postID);
+                    if (i == -1) throw new Error("Couldn't find post index " + i);
+                    this.posts.splice(i, 1);
                 });
         }
     },
