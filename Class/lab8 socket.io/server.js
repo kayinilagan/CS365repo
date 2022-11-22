@@ -25,18 +25,25 @@ server.listen(80, function () {
 	io.on("connection", (socket) => {
 		console.log("Somebody connected.");
 
+		socket.emit("updatePosition", dogOffset);
+
 		socket.on("disconnect", () => {
 			console.log("Somebody disconnected.");
 		});
 
 		//This gets called when a client emits a "moveLeft" message
 		socket.on("moveLeft", (dataFromClient) => {
-			dogOffset--;
+			dogOffset -= 5;
 			console.log("Position is now " + dogOffset);
 			io.emit("updatePosition", dogOffset); //telling all the clients the new position.
 		});
 
 		//Any other messages such as "moveRight" will be handled here similarly
+		socket.on("moveRight", (dataFromClient) => {
+			dogOffset += 3;
+			console.log("Position is now " + dogOffset);
+			io.emit("updatePosition", dogOffset);
+		})
 	});
 });
 

@@ -11,7 +11,8 @@ let myApp = Vue.createApp({
     computed: {
         currentDogOffset() {
             return {
-                left: this.dogOffset + "px"
+                left: this.dogOffset + "px",
+                right: this.dogOffset + "px"
             };
         }
     },
