@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Tug of war</title>
+	<link href="style1.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>Tug of war</h1>
+	<div id="app">
+		<div id="tugOfWarContainer">
+			<img src="tugOfWarBackground.png" id="background">
+			<img src="tugOfWarDogs.png" v-bind:style="currentDogOffset" id="foreground">
+		</div>
+		<div id="buttonContainer">
+			<button type="button" @click="tugLeft" id="left">Left</button>
+			<button type="button" @click="tugRight" id="right">Right</button>
+		</div>
+	</div>
+
+</body>
+<script defer src="/socket.io/socket.io.js" type="text/javascript"></script>
+<script defer src="vue.global.js"></script>
+<script defer src="client.js" type="text/javascript"></script>
+
+</html>
