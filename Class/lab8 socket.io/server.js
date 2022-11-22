@@ -1,4 +1,5 @@
 //This part is the same as usual...
+const e = require("express");
 var express = require("express");
 var app = express();
 
@@ -19,9 +20,25 @@ var io = socketio(server);
 //Just for static files (like usual).  Eg. index.html, client.js, etc.
 app.use(express.static("pub"));
 
-
 server.listen(80, function () {
 	let dogOffset = 0; //the "official" record of where the dogs are located
+
+	function updateOffset(offset) {
+		if (offset == 0) {
+			dogOffset = 0;
+		} else {
+			dogOffset += offset;
+		}
+		if (dogOffset == 60) {
+			io.emit("win", "Right wins!");
+		} else if (dogOffset == -60) {
+			io.emit("win", "Left wins!");
+		} else {
+			console.log("Position is now " + dogOffset);
+			io.emit("updatePosition", dogOffset); //telling all the clients the new position.
+		}
+	}
+
 	io.on("connection", (socket) => {
 		console.log("Somebody connected.");
 
@@ -32,18 +49,19 @@ server.listen(80, function () {
 		});
 
 		//This gets called when a client emits a "moveLeft" message
-		socket.on("moveLeft", (dataFromClient) => {
-			dogOffset -= 5;
-			console.log("Position is now " + dogOffset);
-			io.emit("updatePosition", dogOffset); //telling all the clients the new position.
+		socket.on("moveLeft", () => {
+			updateOffset(-5);
 		});
 
 		//Any other messages such as "moveRight" will be handled here similarly
-		socket.on("moveRight", (dataFromClient) => {
-			dogOffset += 3;
-			console.log("Position is now " + dogOffset);
-			io.emit("updatePosition", dogOffset);
-		})
+		socket.on("moveRight", () => {
+			updateOffset(5);
+		});
+
+		socket.on("reset", () => {
+			updateOffset(0);
+		});
+
 	});
 });
 

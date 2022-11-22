@@ -6,7 +6,8 @@ let myApp = Vue.createApp({
     },
     methods: {
         tugLeft() { this.dogOffset -= 10; socket.emit("moveLeft"); },
-        tugRight() { this.dogOffset += 10; socket.emit("moveRight"); }
+        tugRight() { this.dogOffset += 10; socket.emit("moveRight"); },
+        reset() { this.dogOffset = 0; socket.emit("reset"); }
     },
     computed: {
         currentDogOffset() {
@@ -14,11 +15,19 @@ let myApp = Vue.createApp({
                 left: this.dogOffset + "px",
                 right: this.dogOffset + "px"
             };
-        }
+        },
     },
     mounted() {
         socket.on("updatePosition", (newOffset) => {
             this.dogOffset = newOffset;
         });
+        socket.on("win", (recievedText) => {
+            let text = recievedText;
+            if (confirm(text)) {
+                socket.emit("reset");
+            } else {
+
+            }
+        })
     },
 }).mount('#app');
