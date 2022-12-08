@@ -9,7 +9,15 @@ let myApp = Vue.createApp({
         };
     },
     methods: {
-
+        setTeamName(index) {
+            console.log("Got called with index" + index);
+            let teamName = document.getElementById(index).value;
+            socket.emit("setTeamName", index, teamName);
+        },
+        reset() {
+            let numberOfTeams = document.getElementById("numOfPlayers").value;
+            socket.emit("reset", numberOfTeams);
+        }
     },
     computed: {
 
