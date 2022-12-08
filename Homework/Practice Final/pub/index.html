@@ -10,9 +10,19 @@
 
 <body>
     <div id="app">
+        <h1> Round-robin tournament viewer </h1>
+        <input type="number" name="numOfPlayers" id="numOfPlayers">
+        <button> Reset </button>
+        <hr>
+        <div id="scoreboard" class="grid-container">
 
+        </div>
+        <ol id="leaderboard">
+            <li v-for="ranking in rankings">
+                {{ ranking.teamName }} is {{ ranking.wins }}-{{ ranking.draws }}-{{ ranking.losses}}
+            </li>
+        </ol>
     </div>
-
 </body>
 
 </html>
