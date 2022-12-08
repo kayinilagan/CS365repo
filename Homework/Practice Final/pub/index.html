@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <script defer src="/socket.io/socket.io.js" type="text/javascript"></script>
     <script defer src="vue.global.js"></script>
     <script defer src="client.js" type="text/javascript"></script>
@@ -17,8 +18,8 @@
         <input type="number" name="numOfPlayers" id="numOfPlayers">
         <button> Reset </button>
         <hr>
-        <div id="scoreboard" class="grid-container">
-
+        <div id="scoreboard">
+            <input v-for="team in teamNames" type="text" :placeholder="[[ team ]]">
         </div>
         <ol id="leaderboard">
             <li v-for="ranking in rankings">
