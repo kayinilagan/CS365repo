@@ -1,15 +1,29 @@
-.grid-container {
-    display: grid;
-    grid-auto-columns: 100px;
-    background-color: #ffffff;
-    padding: 10px;
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
-.grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 12px;
+input {
+    width: 143px;
+}
+
+.container>div {
+    display: table-cell;
+    background-color: gray;
+    width: 149px;
+    height: 34px;
+    border: 1px solid black;
     text-align: center;
+    vertical-align: middle;
+}
+
+#teamNames {
+    position: relative;
+    left: 149px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 149px auto;
 }
