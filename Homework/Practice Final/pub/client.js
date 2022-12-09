@@ -20,7 +20,31 @@ let myApp = Vue.createApp({
         },
         changeResult(column, row) {
             console.log(column + "," + row);
-            socket.emit("changeResult", row, column)
+            if (column == row) {
+                return;
+            }
+            socket.emit("changeResult", column, row)
+        },
+        updateVisuals() {
+            for (let i = 0; i < this.results.length; i++) {
+                for (let j = 0; j < this.results.length; j++) {
+                    console.log(i + "," + j);
+                    let id = i + "," + j;
+                    console.log(document.getElementById("0,0"));
+                    let target = document.getElementById(id);
+                    if (target.value == 1) {
+                        target.style.backgroundColor = rgb(0, 255, 0);
+                        target.value = "Win";
+                    } else if (target.value == 2) {
+                        target.style.backgroundColor = rgb(255, 0, 0);
+                        target.value = "Loss";
+                    } else if (target.value == 3) {
+                        target.value = "Draw";
+                    } else {
+                        target.value = "-";
+                    }
+                }
+            }
         }
     },
     computed: {
@@ -35,6 +59,7 @@ let myApp = Vue.createApp({
             this.results = results;
             this.teamNames = teamNames;
             this.rankings = rankings;
+            // this.updateVisuals();
         });
     }
 }).mount('#app');

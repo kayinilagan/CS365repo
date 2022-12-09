@@ -22,7 +22,7 @@
             <input v-for="(team,index) in teamNames" v-on:keydown.enter="setTeamName(index)" type="text"
                 :value="[[ team ]]" :id="[[ index ]]">
         </div>
-        <div class="grid" v-for="(result, resultIndex) in results" :id="[[ resultIndex ]]">
+        <div class="grid" v-for="(result, resultIndex) in results" :id="[[ 'row' + resultIndex ]]">
             <span> <strong> {{ teamNames[resultIndex] }} </strong> </span>
             <div id="scoreboard" class="container">
                 <div v-for="(score, scoreIndex) in result" :id="[[ resultIndex, scoreIndex ]]"
