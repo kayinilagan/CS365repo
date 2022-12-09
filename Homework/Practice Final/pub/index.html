@@ -25,7 +25,8 @@
         <div class="grid" v-for="(result, resultIndex) in results" :id="[[ resultIndex ]]">
             <span> <strong> {{ teamNames[resultIndex] }} </strong> </span>
             <div id="scoreboard" class="container">
-                <div v-for="(score, scoreIndex) in result" :id="[[ scoreIndex ]]">
+                <div v-for="(score, scoreIndex) in result" :id="[[ resultIndex, scoreIndex ]]"
+                    @click="changeResult(resultIndex, scoreIndex)">
                     {{ score }}
                 </div>
             </div>

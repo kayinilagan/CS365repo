@@ -17,6 +17,10 @@ let myApp = Vue.createApp({
         reset() {
             let numberOfTeams = document.getElementById("numOfPlayers").value;
             socket.emit("reset", numberOfTeams);
+        },
+        changeResult(column, row) {
+            console.log(column + "," + row);
+            socket.emit("changeResult", row, column)
         }
     },
     computed: {
