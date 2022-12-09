@@ -30,7 +30,7 @@ let myApp = Vue.createApp({
                 for (let j = 0; j < this.results.length; j++) {
                     console.log(i + "," + j);
                     let id = i + "," + j;
-                    console.log(document.getElementById("0,0"));
+                    console.log(document.getElementById(id));
                     let target = document.getElementById(id);
                     if (target.value == 1) {
                         target.style.backgroundColor = rgb(0, 255, 0);
@@ -59,7 +59,7 @@ let myApp = Vue.createApp({
             this.results = results;
             this.teamNames = teamNames;
             this.rankings = rankings;
-            // this.updateVisuals();
+            //this.updateVisuals();
         });
     }
 }).mount('#app');
