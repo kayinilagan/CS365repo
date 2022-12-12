@@ -36,7 +36,7 @@ let myApp = Vue.createApp({
 
     },
     mounted() {
-        socket.on("updateResults", (results, teamNames, rankings) => {
+        socket.on("updateUI", (grid, whoseTurn, rankings) => {
             console.log(results);
             console.log(teamNames);
             console.log(rankings);

@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(4, 87, 16);
+    color: antiquewhite;
+}
+
+.noResult {
+    background-color: grey;
+}
+
+.white {
+    background-color: antiquewhite;
+}
+
+.red {
+    background-color: rgb(192, 53, 53);
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #ffffff;
+}
+
+td {
+    width: 75px;
+    height: 75px;
+    border: 1px solid white;
+    color: transparent;
+}

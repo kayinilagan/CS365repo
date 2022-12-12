@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Territory</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="/socket.io/socket.io.js" type="text/javascript"></script>
+    <script defer src="vue.global.js"></script>
+    <script defer src="client.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1> Territory</h1>
+        <div> {{ displayTurnFor(whoseTurn)}} </div>
+        <div> {{ displayNumPeople(numPeople)}} </div>
+        <table>
+            <tr v-for="(row, rowIndex) in grid">
+                <td v-for="(square, columnIndex) in row" v-bind:class="displayClassFor(square)"
+                    @click="colorSquare(columnIndex, rowIndex)" :id="[[columnIndex + ',' + rowIndex]]">
+                    <!-- I was using ID's and values even though it was not needed to see if i can get the winner-->
+                    {{ square }}
+                </td>
+            </tr>
+        </table>
+        <input type="number" id="gridSize" v-model="gridSize"><button @click="reset"> Reset </button>
+    </div>
+</body>
+
+</html>
