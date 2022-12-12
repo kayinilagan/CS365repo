@@ -10,7 +10,6 @@ input {
 
 .container>div {
     display: table-cell;
-    background-color: gray;
     width: 149px;
     height: 34px;
     border: 1px solid black;
@@ -21,6 +20,22 @@ input {
 #teamNames {
     position: relative;
     left: 149px;
+}
+
+.Win {
+    background-color: green;
+}
+
+.Loss {
+    background-color: red;
+}
+
+.Draw {
+    background-color: yellow;
+}
+
+.NA {
+    background-color: gray;
 }
 
 .grid {

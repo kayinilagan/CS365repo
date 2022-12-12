@@ -25,26 +25,11 @@ let myApp = Vue.createApp({
             }
             socket.emit("changeResult", column, row)
         },
-        updateVisuals() {
-            for (let i = 0; i < this.results.length; i++) {
-                for (let j = 0; j < this.results.length; j++) {
-                    console.log(i + "," + j);
-                    let id = i + "," + j;
-                    console.log(document.getElementById("0,0"));
-                    let target = document.getElementById(id);
-                    if (target.value == 1) {
-                        target.style.backgroundColor = rgb(0, 255, 0);
-                        target.value = "Win";
-                    } else if (target.value == 2) {
-                        target.style.backgroundColor = rgb(255, 0, 0);
-                        target.value = "Loss";
-                    } else if (target.value == 3) {
-                        target.value = "Draw";
-                    } else {
-                        target.value = "-";
-                    }
-                }
-            }
+        displayResultFor(val) {
+            if (val == 1) return "Win";
+            else if (val == 2) return "Loss";
+            else if (val == 3) return "Draw";
+            else return "NA";
         }
     },
     computed: {
