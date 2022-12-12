@@ -44,7 +44,7 @@ let myApp = Vue.createApp({
             this.results = results;
             this.teamNames = teamNames;
             this.rankings = rankings;
-            // this.updateVisuals();
+            //this.updateVisuals();
         });
     }
 }).mount('#app');
